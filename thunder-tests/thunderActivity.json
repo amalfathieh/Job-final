@@ -1,0 +1,36 @@
+[
+    {
+        "_id": "c5f791df-4628-4130-a03d-1dd5bd4a491c",
+        "colId": "history",
+        "containerId": "",
+        "name": "http://127.0.0.1:8000/api/login",
+        "url": "http://127.0.0.1:8000/api/login",
+        "method": "POST",
+        "sortNum": 0,
+        "created": "2024-05-18T20:40:52.740Z",
+        "modified": "2024-05-18T20:40:52.740Z",
+        "headers": [],
+        "body": {
+            "type": "json",
+            "raw": "{\n  \"login\":\"Amal\",\n  \"password\":\"Ab12345@\"\n}",
+            "form": []
+        }
+    },
+    {
+        "_id": "12081ca7-963e-4423-bcfa-a58e2ecd4901",
+        "colId": "history",
+        "containerId": "",
+        "name": "http://127.0.0.1:8000/api/login",
+        "url": "http://127.0.0.1:8000/api/login",
+        "method": "POST",
+        "sortNum": 0,
+        "created": "2024-05-18T20:46:14.022Z",
+        "modified": "2024-05-18T20:46:35.302Z",
+        "headers": [],
+        "body": {
+            "type": "json",
+            "raw": "{\n  \"login\":\"User\",\n  \"password\":\"Ab123@\"\n}",
+            "form": []
+        }
+    }
+]

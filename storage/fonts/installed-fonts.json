@@ -1,0 +1,39 @@
+{
+    "lato": {
+        "normal": "C:\\Users\\Aloshe\\Desktop\\Project1\\Jobs\\storage\\fonts\/lato_normal_1e76f4095824347c5952fde032e6e608",
+        "bold": "C:\\Users\\Aloshe\\Desktop\\Project1\\Jobs\\storage\\fonts\/lato_bold_86e1573850012e2276a75106baf0c899",
+        "900": "lato_900_13c26f063155375741649da90dc43758"
+    },
+    "font awesome 6 brands": {
+        "normal": "font_awesome_6_brands_normal_92c45b19798a109fcc8b8f9e249272d8"
+    },
+    "font awesome 6 free": {
+        "normal": "D:\\project laravel\\Jobs\\storage\\fonts\/font_awesome_6_free_normal_30b57e7665436a6587cd5386a637d3de",
+        "900": "font_awesome_6_free_900_72233ab0c0c82334bfa8594e8b8daca5"
+    },
+    "font awesome 5 brands": {
+        "normal": "font_awesome_5_brands_normal_92c45b19798a109fcc8b8f9e249272d8"
+    },
+    "font awesome 5 free": {
+        "900": "D:\\project laravel\\Jobs\\storage\\fonts\/font_awesome_5_free_900_72233ab0c0c82334bfa8594e8b8daca5",
+        "normal": "font_awesome_5_free_normal_30b57e7665436a6587cd5386a637d3de"
+    },
+    "fontawesome": {
+        "normal": "fontawesome_normal_43761f5746d8c4fa117cda43d0ce99da"
+    },
+    "roboto": {
+        "300_italic": "D:\\project laravel\\Jobs\\storage\\fonts\/roboto_300_italic_60fd1c5c48964f53c185886d78f6dd92",
+        "italic": "D:\\project laravel\\Jobs\\storage\\fonts\/roboto_italic_d5c10dd70a66238a4d11751aca1ac2f6",
+        "500_italic": "D:\\project laravel\\Jobs\\storage\\fonts\/roboto_500_italic_cb3389574fec6f0962ed3b8e8df3657a",
+        "bold_italic": "D:\\project laravel\\Jobs\\storage\\fonts\/roboto_bold_italic_3c4c982d93d98be963531fd17b72c633",
+        "900_italic": "D:\\project laravel\\Jobs\\storage\\fonts\/roboto_900_italic_88fdfb383ea3335a2ea849c31af79315",
+        "300": "D:\\project laravel\\Jobs\\storage\\fonts\/roboto_300_21960201651f2ea862182ff34dfd5ead",
+        "normal": "C:\\Users\\Aloshe\\Desktop\\Project1\\Jobs\\storage\\fonts\/roboto_normal_7bc701b343c10631f60048716b96e4f7",
+        "500": "D:\\project laravel\\Jobs\\storage\\fonts\/roboto_500_d0dcda9e813eb9b854a1cc044831f6fe",
+        "bold": "roboto_bold_8db5cb5d0586c1e891426d13097b1d04",
+        "900": "C:\\Users\\Aloshe\\Desktop\\Project1\\Jobs\\storage\\fonts\/roboto_900_509a5e5b153550862359e315131088d5"
+    },
+    "glyphicons halflings": {
+        "normal": "glyphicons_halflings_normal_df31caafbfa62a5bbe5552e25e16b818"
+    }
+}
