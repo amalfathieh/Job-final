@@ -47,12 +47,12 @@ public function __construct(PostService $postService)
             }
             $data =[
                 'obj_id'=> $post->id,
-                'title'=> __('strings.post_title'),
-                'body'=> __('strings.post_body', ['first_name' => $seeker->first_name]),
+                'title'=> 'New Post',
+                'body'=> 'New post has been published by '. $seeker->first_name,
             ];
 
             Notification::send($followers,new SendNotification($data));
-//            $this->sendPushNotification($data['title'],$data['body'],$tokens);
+           $this->sendPushNotification($data['title'],$data['body'],$tokens);
         }
         return $this->apiResponse(new PostResource($post), __('strings.post_added'), 201);
     }

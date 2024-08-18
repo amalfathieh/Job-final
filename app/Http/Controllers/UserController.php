@@ -12,6 +12,8 @@ use App\Http\Resources\UserResource;
 use App\Jobs\ChangeEmailJob;
 use App\Jobs\ForgotPasswordJob;
 use App\Jobs\MailJob;
+use App\Mail\ForgotPassword;
+use App\Mail\VerificationCodeMail;
 use App\Models\Opportunity;
 use App\Models\Post;
 use App\Models\ResetCodePassword;
@@ -59,7 +61,8 @@ class UserController extends Controller
             'roles_name' => ['user' ,$request['roles_name']],
         ]);
         $user->syncRoles($user->roles_name);
-        MailJob::dispatch($request->email, $data['code']);
+
+        Mail::to($data['email'])->send(new VerificationCodeMail($data['code']));
         return $this->apiResponse([], __('strings.verification_code_sent') , 200);
     }
 
@@ -250,7 +253,7 @@ public function verifyAccount(Request $request )
 
             $codeData = VerificationCode::create($data);
 
-            ForgotPasswordJob::dispatch($data['email'], $data['code']);
+            Mail::to($data['email'])->send(new ForgotPassword($data['code']));
 
             return $this->apiResponse([], __('strings.code_sent_email'), 200);
         } catch (\Exception $ex) {

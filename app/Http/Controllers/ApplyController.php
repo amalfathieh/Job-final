@@ -59,11 +59,11 @@ class ApplyController extends Controller
 
                 $data =[
                     'obj_id'=> $apply->id,
-                    'title'=> __('strings.title_new_request'),
-                    'body'=> __('strings.new_request', ['first_name' => $seeker->first_name, 'last_name' => $seeker->last_name, 'title' => $opportunity->title]),
+                    'title'=> 'New Job request',
+                    'body'=> 'There is a new request from '. $seeker->first_name.' ' .$seeker->last_name .' for your opportunity '. $opportunity->title,
                 ];
                 Notification::send($user,new SendNotification($data));
-        //      $this->sendPushNotification($data['title'],$data['body'],$tokens);
+                $this->sendPushNotification($data['title'],$data['body'],$tokens);
                 return $this->apiResponse(new ApplyResource($apply), __('strings.apply_successfully'), 201);
             }
         } catch (\Exception $th) {
@@ -130,21 +130,21 @@ class ApplyController extends Controller
                 'status' => $request->status
             ]);
             if($request->status == 'accepted'){
-                $body = __('strings.request_accepted', ['company_name' => $user->company->company_name]);
+                $body = 'Congratulations, Your request has benn accepted at '. $user->company->company_name;
             }
             else if($request->status == 'rejected'){
-                $body = __('strings.request_rejected', ['company_name' => $user->company->company_name]);
+                $body = 'Unfortunately, Your request has been rejected at ' . $user->company->company_name;
             }
             $seeker = Seeker::where('id', $apply->seeker_id)->first();
             $user = User::find($seeker->user_id);
             $tokens = $user->routeNotificationForFcm();
             $data =[
                 'obj_id'=> $apply->id,
-                'title'=> __('strings.opp_title'),
+                'title'=>  'New Job request',
                 'body'=> $body,
             ];
             Notification::send($user,new SendNotification($data));
-//            $this->sendPushNotification($data['title'],$data['body'],$tokens);
+           $this->sendPushNotification($data['title'],$data['body'],$tokens);
 
             return $this->apiResponse(new ApplyResource($apply),  __('strings.updated_successfully'), 200);
         }

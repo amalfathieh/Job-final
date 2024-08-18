@@ -51,12 +51,12 @@ class OpportunityController extends Controller
                 }
                 $data =[
                     'obj_id'=> $opportunity->id,
-                    'title'=> __('strings.opp_title'),
-                    'body'=> __('strings.opp_body', ['company_name' => $user->company->company_name]),
+                    'title'=> 'New Opportunity',
+                    'body'=> 'New opportunity has been published by '. $user->company->company_name,
                 ];
 
                 Notification::send($followers,new SendNotification($data));
-//                $this->sendPushNotification($data['title'],$data['body'],$tokens);
+               $this->sendPushNotification($data['title'],$data['body'],$tokens);
             }
             return $this->apiResponse(new OpportunityResource($opportunity), __('strings.opportunity_added_successfully'), 201);
         }catch (\Exception $ex) {
