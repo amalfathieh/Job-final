@@ -1,11 +1,9 @@
- <?php
-
-
+<?php
 namespace App\Traits;
 
 
 trait NotificationTrait
-{
+  {
     use responseTrait;
 
 //Route::patch('/fcm-token', [HomeController::class, 'updateToken'])->name('fcmToken');
@@ -13,7 +11,7 @@ trait NotificationTrait
 
     function sendPushNotification($title, $body,$token){
         try {
-        $SERVER_API_KEY = 'AAAAWwd3fqw:APA91bHJ5IDjouYCr3XwhwABLuuCH5PT4W_ZQju9HkOz3RGhVAbP07jS81Zp9W4_-J_wv2bBWtMeGGhUJUl0xBSuXdrIvqTg2ohjpiZWR-Cdj1EgbO89qwTcfOYvmPkxmzborR3kPiE5';
+        $SERVER_API_KEY = 'AAAAH63tbUw:APA91bEC2LGwyU9cb4K6C-UZEYkbRBJaLlAiXaNhtsQaQAXhQeeQ0lLBno-0EZY4jsOhXXBTfJ3DN_rLGQR30Cqgy0xOtm_C0mrqPSlF4HZZKtOQOKP81N7ybilaQcaedEgedVZ6bTWc';
 
         $data = [
         "registration_ids" => $token,
@@ -42,7 +40,6 @@ trait NotificationTrait
 
             $response = curl_exec($ch);
             //curl_close($ch);
-            dd($response);
 
             return response()->json(['success' => true, 'response' => $response]);
 

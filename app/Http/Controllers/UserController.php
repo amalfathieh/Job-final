@@ -63,7 +63,7 @@ class UserController extends Controller
         $user->syncRoles($user->roles_name);
 
         Mail::to($data['email'])->send(new VerificationCodeMail($data['code']));
-        return $this->apiResponse([], __('strings.verification_code_sent') , 200);
+        return $this->apiResponse($data, __('strings.verification_code_sent') , 200);
     }
 
 public function customToken(){
@@ -190,8 +190,7 @@ public function verifyAccount(Request $request )
             //Generate new code
             $data['email'] = $request->email;
             $data['code'] = mt_rand(100000, 999999);
-            $codeData = VerificationCode::create($data);
-            MailJob::dispatch($request->email, $data['code']);
+            Mail::to($data['email'])->send(new VerificationCodeMail($data['code']));
             return $this->apiResponse([], __('strings.code_sent_email') , 200);
         } catch (\Exception $ex) {
             return $this->apiResponse(null, $ex->getMessage(), 500);
@@ -234,7 +233,7 @@ public function verifyAccount(Request $request )
     {
         try {
             $validate = Validator::make($request->all(), [
-                'email' => 'required|email|exists:users',
+                'email' => ['required', 'email', 'exists:users,email'],
             ]);
 
             if ($validate->fails()) {
@@ -250,8 +249,6 @@ public function verifyAccount(Request $request )
 
             $data['email'] = $user->email;
             $data['code'] = mt_rand(100000, 999999);
-
-            $codeData = VerificationCode::create($data);
 
             Mail::to($data['email'])->send(new ForgotPassword($data['code']));
 

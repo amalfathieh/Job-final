@@ -24,7 +24,7 @@ use function PHPUnit\Framework\isEmpty;
 
 class PostController extends Controller
 {
-    use responseTrait,NotificationTrait;
+    use responseTrait, NotificationTrait;
     protected $postService;
 public function __construct(PostService $postService)
     {
@@ -40,7 +40,7 @@ public function __construct(PostService $postService)
         );
 
         $followers = $user->followers;
-        if ($followers) {
+        if ($followers && count($followers) > 0) {
             $tokens = [];
             foreach($followers as $follower){
                 $tokens = array_merge($tokens , $follower->routeNotificationForFcm());

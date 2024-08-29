@@ -26,9 +26,9 @@ class SaveController extends Controller
                 $user->savedOpportunities()->attach($opportunity);
                 $message = __('strings.opportunity_added');
             }
-            return $this->apiResponse(null,$message,200);
+            return $this->apiResponse(null, $message,200);
         }
-            return $this->apiResponse(null,__('strings.not_found'),404);
+            return $this->apiResponse(null, __('strings.not_found'), 404);
     }
     public function getSavedItems(){
         $user = Auth::user();

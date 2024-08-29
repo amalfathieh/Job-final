@@ -12,6 +12,7 @@ use App\Models\User;
 use App\Notifications\SendNotification;
 use App\services\FileService;
 use App\Traits\responseTrait;
+use App\Traits\NotificationTrait;
 use Illuminate\Auth\AuthenticationException;
 use Illuminate\Http\Request;
 use App\services\OpportunityService;
@@ -26,7 +27,7 @@ use function PHPUnit\Framework\isNull;
 
 class OpportunityController extends Controller
 {
-    use responseTrait;
+    use responseTrait, NotificationTrait;
     public function addOpportunity(OpportunityRequest $request, OpportunityService $service) {
         try {
             $files = $request->file('files');
@@ -44,7 +45,7 @@ class OpportunityController extends Controller
             );
             // get followers tokens
             $followers = $user->followers;
-            if ($followers) {
+            if ($followers && count($followers) > 0) {
                 $tokens = [];
                 foreach($followers as $follower){
                     $tokens = array_merge($tokens , $follower->routeNotificationForFcm());

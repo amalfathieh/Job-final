@@ -13,6 +13,7 @@ use App\Models\User;
 use App\Notifications\SendNotification;
 use App\services\FileService;
 use App\Traits\responseTrait;
+use App\Traits\NotificationTrait;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Notification;
@@ -20,7 +21,7 @@ use Illuminate\Support\Facades\Validator;
 
 class ApplyController extends Controller
 {
-    use responseTrait;
+    use responseTrait, NotificationTrait;
     public function apply(ApplyRequest $request, $id, FileService $fileService) {
         try {
             $apply = null;

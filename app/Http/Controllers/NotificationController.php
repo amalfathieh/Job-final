@@ -47,12 +47,10 @@ class NotificationController extends Controller
     }
 
     public function getNotificationContent(Request $request){
-        // return Auth::user()->id;
-        // return "hhh";
         $request->validate([
             'id'=>'required',
         ]);
-         $notification = DB::table('notifications')->where('notifiable_id' ,Auth::user()->id )->where('id',$request->id)->first();
+         $notification = DB::table('notifications')->where('id',$request->id)->first();
 
          if ($notification){
              $data = [
@@ -60,7 +58,7 @@ class NotificationController extends Controller
                  'content'=>null,
              ];
 
-              $notificationData = json_decode($notification->data);
+             $notificationData = json_decode($notification->data);
              $title = $notificationData->title;
 
              DB::table('notifications')->where('id',$request->id)->update(["read_at"=>now()]);
@@ -73,7 +71,7 @@ class NotificationController extends Controller
                  }
              }
              //فوصة عمل
-             else if($title == 'New Opportunity'){
+             else if($title == 'Job Opportunity'){
                  $data['type']='opportunity';
                  $opportunity = Opportunity::find($notificationData->obj_id);
 
@@ -82,7 +80,7 @@ class NotificationController extends Controller
                  }
              }
              //طلب توظيف
-             else if($title == 'New Job request'){
+             else if($title == 'Job Application'){
                  $data['type']='application';
                  $job_application = Apply::find($notificationData->obj_id);
                  if($job_application) {
